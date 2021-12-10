@@ -24,4 +24,4 @@ const Macro = db.define("macro", {
     }
 })
 
-module.exports = Macro
+module.exports = Macro;
