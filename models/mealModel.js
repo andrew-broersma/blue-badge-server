@@ -23,3 +23,5 @@ const Macro = db.define("macro", {
         allowNull: false
     }
 })
+
+module.exports = Macro
