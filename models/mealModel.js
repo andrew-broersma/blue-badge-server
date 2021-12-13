@@ -21,6 +21,13 @@ const Macro = db.define("macro", {
     kCal: {
         type: DataTypes.INTEGER,
         allowNull: false
+    },
+    owner: {
+        type: DataTypes.INTEGER
+    },
+    mealCat: {
+        type: DataTypes.INTEGER(4),
+        allowNull: false
     }
 })
 
