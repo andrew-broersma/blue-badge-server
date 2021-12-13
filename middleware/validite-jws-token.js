@@ -3,25 +3,25 @@ const { UserModel } = require("../models")
 
 const validateSession = async (req, res, next) => {
     try {
-        if (req.method === "OPTIONS") {
-            return next()
+        if (req.method == "OPTIONS") {
+            console.log(req.headers);
+            next()
         } else if (req.headers.authorization) {
-            console.log(req.headers)
-            const authorization = req.headers.authorization
+            // console.log(req.headers)
+            const {authorization} = req.headers
         
             const payload = authorization ? jwt.verify(authorization, process.env.JWT_SECRET) : undefined
+            console.log(payload);
     
             if (payload) {
-                const foundUser = await UserModel.findOne({
-                    where: { id: payload.id}
-                })
+                const foundUser = await UserModel.findOne({where: { id: payload.id}});
     
                 if (foundUser) {
                     req.user = foundUser
                     next()
                 } else {
                     res.status(400).json({
-                        message: "User not found."
+                        message: "User not found"
                     })
                 }
             } else {
@@ -31,7 +31,7 @@ const validateSession = async (req, res, next) => {
             }
         } else {
             res.status(403).json({
-                message: "forbidden"
+                message: "Forbidden"
             })
         }
     } catch (err) {
