@@ -9,6 +9,7 @@ const middleware = require("./middleware")
 
 
 app.use(Express.json())
+app.use(require('./middleware/headers'))
 
 app.use('/meal', middleware.validateSession, controllers.mealController)
 app.use('/user', controllers.userController)

@@ -26,7 +26,7 @@ const Macro = db.define("macro", {
         type: DataTypes.INTEGER
     },
     mealCat: {
-        type: DataTypes.INTEGER(4),
+        type: DataTypes.INTEGER,
         allowNull: false
     }
 })
