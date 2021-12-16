@@ -29,7 +29,7 @@ router.post('/create', async (req, res) => {
 });
 
 // Find all meals for logged in user
-router.get('/user/:id', async (req, res) => {
+router.get('/:id', async (req, res) => {
     const {id} = req.params
 
     try {
