@@ -1,8 +1,8 @@
 const {Sequelize} = require("sequelize")
 
-const Sequelize = new Sequelize(process.env.DATABASE_URL) {
+const Sequelize = new Sequelize(process.env.DATABASE_URL, {
     dialect: 'postgres',
     ssl: process.env.ENVIRONMENT === 'production'
-}
+})
 
 module.exports = db
