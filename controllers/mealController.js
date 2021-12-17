@@ -19,7 +19,9 @@ router.post('/create', async (req, res) => {
         owner: id,
         mealCat // 1: Breaky, 2: Lunch, 3: DinDin, 4: SnackySnacks
     } 
-
+    // This is an example of the controller and the model working together. Here the controller is 
+    // triggered when the /create endpoint is hit. It then takes the request body from the request and
+    // sends it to be compared with the MealModel and then be created in the database.
     try{
         const newMeal = await MealModel.create(mealEntry);
         res.status(200).json(newMeal);
@@ -82,7 +84,6 @@ router.delete("/delete/:id", async (req, res) => {
                 owner: ownerId
             }
         };
-
         await MealModel.destroy(query)
         res.status(200).json({message: "Journal Entry Removed"});
     }   catch(err) {

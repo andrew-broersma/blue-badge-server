@@ -12,7 +12,9 @@ const validateSession = async (req, res, next) => {
         
             const payload = authorization ? jwt.verify(authorization, process.env.JWT_SECRET) : undefined
             console.log(payload);
-    
+            // this is where our server checks to see if the token is valid for our application. it compares the secret
+            // we have in the config variables to the secret that is buried in the token. This is used called in every
+            // /meals path so that we can check to make sure they are a valid user or not.
             if (payload) {
                 const foundUser = await UserModel.findOne({where: { id: payload.id}});
     

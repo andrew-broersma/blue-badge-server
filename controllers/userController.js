@@ -16,6 +16,11 @@ router.post('/register',  async (req, res) => {
             password: bcrypt.hashSync(password, 12)
         });
 
+        // this is where a JWT is created. It is basically creating the token with the information of
+        // user id, a secret, and when it expires. The token is put in the variable "token" and then placed
+        // in the response that is sent back to the user. this token will then be used in validate-jws-token
+        // (what it was called in our code) to be able to access the restricted areas of our client
+
     let token = jwt.sign({id: User.id}, process.env.JWT_SECRET, {expiresIn: 60*60*24})    
 
         res.status(200).json({
